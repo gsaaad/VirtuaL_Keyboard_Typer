@@ -51,10 +51,12 @@
   opacity: 0;
 }
 .card2 {
+  text-align: center;
+  align-items: center;
   border-radius: 5%;
   background: #191c29;
   height: 25vh;
-  font-size: 3rem;
+  font-size: 5rem;
   color: white;
   overflow: hidden;
   display: flex;
@@ -68,7 +70,7 @@
   color: teal;
 }
 .card {
-  margin: auto;
+  margin: 10px 0px;
   border-radius: 5%;
   background: #191c29;
   width: 99%;

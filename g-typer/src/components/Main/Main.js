@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import "./Main.css";
 import randomwords from "random-words";
 
 const Main = () => {
-  const [moveSlide, setMoveSlide] = useState({
-    transform: "translate(5px, 20px)",
-  });
-  var words = [];
+  const [words, setWords] = useState([]);
+  var errorRef = useRef(null);
+  const [errorCount, setErrorCount] = useState(0);
   const generateWords = () => {
     for (let i = 0; i < 400; i++) {
       var word = randomwords();
@@ -16,7 +15,15 @@ const Main = () => {
     }
   };
   generateWords();
-  console.log(words);
+  //   generateWords();
+
+  useEffect(() => {
+    const errorP = errorRef;
+    errorP.current.innerHTML = "errorCount: " + errorCount;
+    // console.log(errorP);
+  }, [errorCount]);
+
+  //   console.log(words);
   var totalWords = words.join(" ");
   //   console.log(totalWords);
   const handleTyping = (e) => {
@@ -28,6 +35,9 @@ const Main = () => {
     var wordByWord = totalWords.slice(0, valueLength);
     if (value === wordByWord) {
       console.log("MATCH");
+    } else {
+      console.log("ERROR, WRONG KEY: " + errorCount);
+      setErrorCount(errorCount + 1);
     }
   };
 
@@ -40,15 +50,16 @@ const Main = () => {
         </h2>
       </div>
       <div className="card-container">
-        <div className="card2 ">
+        <div className="card2">
           {/* <p className="totalWords">{totalWords}</p> */}
           {words.map((word) => (
-            <p className="words" key={word}>
+            <p className="words " key={word}>
               {word}
             </p>
           ))}
         </div>
-        <input className="card input" id="card" onChange={handleTyping} />
+        <input className="card input" id="input" onChange={handleTyping} />
+        <p ref={errorRef}></p>
         Keep on typing
       </div>
       <div className="flex flex-row m-2 flex-wrap" id="buttonsContainer"></div>
