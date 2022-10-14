@@ -1,0 +1,201 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 40vh;
+  --card-width: 100px;
+}
+body {
+  min-height: 40vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+.card {
+  background: #191c29;
+
+  width: 70vw;
+  height: 25vh;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  font-family: cursive;
+}
+#input {
+  padding: 4% 20%;
+  margin: 15px;
+}
+
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+.card:before {
+  content: "Hello!";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #74e1ff,
+    #3b0beb,
+    43%,
+    #2d026e
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 5.5s linear infinite;
+}
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 5px auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3,
+    43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 20s linear infinite;
+}
+/* okay time to experiment! */
+
+#Keys {
+  background: #191c29;
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5rem;
+  color: rgb(88 199 250/ 0%);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+#Keys:hover {
+  color: rgb(88 199 250/100%);
+  transition: color 1s;
+}
+#Keys:hover:before,
+#Keys:hover:after {
+  animation: none;
+  opacity: 0;
+}
+#Keys:before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #e2e91a,
+    #76e33c,
+    43%,
+    #00c26e
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 6s linear infinite;
+}
+#Keys::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3,
+    43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 6s linear infinite;
+}
+
+#buttonsContainer > button:nth-child(n + 1):nth-child(-n + 10) {
+  background-image: linear-gradient(
+    var(--rotate),
+    #e2e91a,
+    #76e33c,
+    43%,
+    #00c26e
+  );
+}
+#buttonsContainer > button:nth-child(n + 11):nth-child(-n + 19) {
+  background-image: linear-gradient(
+    var(--rotate),
+    #00a408,
+    #00549e,
+    43%,
+    #3a006c
+  );
+}
+#buttonsContainer > button:nth-child(n + 20):nth-child(-n + 26) {
+  background-image: linear-gradient(
+    var(--rotate),
+    #b4ba00,
+    #2c7d00,
+    43%,
+    #00492a
+  );
+}
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  50% {
+    --rotate: 300deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+#Keys {
+  color: white;
+  background-color: var(--lightBlue);
+}
