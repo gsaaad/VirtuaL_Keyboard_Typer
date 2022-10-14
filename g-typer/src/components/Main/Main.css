@@ -51,33 +51,41 @@
   opacity: 0;
 }
 .card2 {
-  text-align: center;
   align-items: center;
   border-radius: 5%;
   background: #191c29;
   height: 25vh;
-  font-size: 5rem;
+  font-size: 2.8rem;
   color: white;
   overflow: hidden;
   display: flex;
 }
 .words {
-  margin: 10px;
+  margin-left: 35px;
+}
+.errorCount {
+  background-color: beige;
+  border-radius: 50%;
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgb(187, 33, 6);
 }
 
 .totalWords::first-letter {
-  font-size: 4.5rem;
+  font-size: 3.3rem;
   color: teal;
 }
 .card {
+  align-items: center;
   margin: 10px 0px;
   border-radius: 5%;
   background: #191c29;
-  width: 99%;
+
   height: 25vh;
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: white;
   padding: 5% 15%;
+  display: flex;
 }
 @keyframes spin {
   0% {
