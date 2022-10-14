@@ -1,0 +1,122 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 44deg;
+  inherits: false;
+}
+
+.main-container {
+  min-height: 87.5vh;
+  text-align: center;
+  padding: 3.5%;
+  width: 100%;
+  background-color: #777;
+}
+.G-title {
+  font-weight: 700;
+  color: rgb(0, 255, 229);
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  /* background-image: linear-gradient(
+    var(--rotate),
+    #74e1ff,
+    #3b0beb,
+    35%,
+    #2d026e
+  );
+  animation: spin 5.5 linear infinite; */
+  background-color: rgb(2, 0, 92);
+  box-shadow: 0px 0px 25px rgba(0, 75, 75, 0.747);
+  animation: example 6s linear infinite;
+  box-sizing: border-box;
+  border-radius: 5%;
+  padding: 1.5%;
+}
+.wrapper {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 14px;
+  width: max-content;
+}
+
+.placeholder {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.input:placeholder-shown + .placeholder {
+  opacity: 0;
+}
+.card2 {
+  border-radius: 5%;
+  background: #191c29;
+  height: 25vh;
+  font-size: 3rem;
+  color: white;
+  overflow: hidden;
+  display: flex;
+}
+.words {
+  margin: 10px;
+}
+
+.totalWords::first-letter {
+  font-size: 4.5rem;
+  color: teal;
+}
+.card {
+  margin: auto;
+  border-radius: 5%;
+  background: #191c29;
+  width: 99%;
+  height: 25vh;
+  font-size: 3rem;
+  color: white;
+  padding: 5% 15%;
+}
+@keyframes spin {
+  0% {
+    --rotate: 22deg;
+  }
+  50% {
+    --rotate: 300deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+@keyframes example {
+  0% {
+    background-color: rgb(9, 56, 158);
+  }
+  10% {
+    background-color: rgb(2, 105, 201);
+  }
+  20% {
+    background-color: rgb(10, 148, 212);
+  }
+  40% {
+    background-color: rgb(7, 204, 178);
+  }
+  50% {
+    background-color: rgb(0, 255, 213);
+  }
+  60% {
+    background-color: rgb(7, 204, 178);
+  }
+  70% {
+    background-color: rgb(0, 255, 213);
+  }
+  80% {
+    background-color: rgb(7, 204, 178);
+  }
+  90% {
+    background-color: rgb(10, 148, 212);
+  }
+  100% {
+    background-color: rgb(2, 0, 92);
+  }
+}
