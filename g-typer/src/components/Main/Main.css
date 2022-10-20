@@ -5,9 +5,10 @@
 }
 
 .main-container {
-  min-height: 88vh;
+  min-height: 95vh;
+  margin-top: 15%;
   text-align: center;
-  padding: 3.5%;
+  padding: 5%;
   width: 100%;
   background-color: #777;
 }
@@ -23,6 +24,7 @@
   border-radius: 20px;
   background: #222020;
   box-shadow: 0px 2px 20px #75bcdd;
+  margin: 4%;
 }
 .bar {
   border-radius: 20px;
@@ -82,7 +84,7 @@
   border-radius: 14%;
   box-shadow: 0px 5px 50px rgb(0, 255, 255);
   background-color: rgb(28, 123, 179);
-  font-size: 5rem;
+  font-size: 3/75rem;
 }
 
 .card2 {
@@ -90,7 +92,7 @@
   border-radius: 5%;
   background: #191c29;
   height: 25vh;
-  font-size: 2.8rem;
+  font-size: 1.75rem;
   color: white;
   overflow: hidden;
   display: flex;
@@ -111,14 +113,56 @@
   background: #191c29;
   height: 25vh;
   width: 100%;
-  font-size: 2.8rem;
+  font-size: 1.75rem;
   color: white;
   padding-left: 40px;
   display: flex;
 }
+.high-score {
+  background: #191c29;
+  display: flex;
+  flex-direction: column;
+  color: #e3e3e3;
+  padding: 2%;
+  border-radius: 5%;
+}
+.score-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+li {
+  list-style: none;
+}
+.save-card {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: auto;
+}
+
+.saveInput {
+  padding: 3%;
+  font-size: 2rem;
+  width: 85%;
+  border-radius: 5%;
+  color: #191c29;
+}
+.saveInput::placeholder {
+  color: #191c29;
+  font-size: 2rem;
+}
+.saveBtn {
+  background: rgb(7, 204, 178);
+  font-size: 2rem;
+  margin: 9%;
+  border-radius: 5%;
+  font-weight: 600;
+  border: 2px solid goldenrod;
+  box-shadow: 3px -3px 10px goldenrod;
+}
 .errorCount {
   background-color: beige;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   padding: 5px;
   border-radius: 10px;
@@ -126,7 +170,7 @@
 }
 .rate {
   background-color: beige;
-  font-size: 3rem;
+  font-size: 1.5rem;
   margin-left: 5%;
   padding: 5px;
   border-radius: 10px;

@@ -3,10 +3,6 @@ import "./Main.css";
 import randomwords from "random-words";
 
 const Main = () => {
-  console.log(window.innerWidth);
-  var windowWidth = window.innerWidth;
-  if (windowWidth < 450) {
-  }
   const [words, setWords] = useState([]);
   var errorRef = useRef(null);
   var wordsRef = useRef(null);
@@ -18,6 +14,12 @@ const Main = () => {
   const [styleReadyComponent, setStyleReadyComponent] = useState({
     display: "block",
   });
+  const [styleHighScoreComponent, setStyleHighScoreComponent] = useState({
+    display: "none",
+  });
+  const [totalWinners, setTotalWinners] = useState([]);
+  const [highScoreName, setHighScoreName] = useState("");
+  var winners = localStorage.getItem("G-Typers") || [];
 
   const generateWords = () => {
     for (let i = 0; i < 400; i++) {
@@ -46,14 +48,10 @@ const Main = () => {
     var wordByWord = totalWords.slice(0, valueLength);
 
     if (value === wordByWord) {
-      console.log("MATCH");
-      console.log(wordByWord);
-      console.log(value);
       setSlide({ transform: `translateX(${distance}px)` });
-      setDistance(distance - 15.5);
+      setDistance(distance - 16.5);
       setCorrectCount(correctCount + 1);
     } else {
-      console.log("ERROR, WRONG KEY: " + errorCount);
       setErrorCount(errorCount + 1);
     }
   };
@@ -65,15 +63,30 @@ const Main = () => {
     const countDown = (i) => {
       var int = setInterval(function () {
         const bar = document.querySelector(".bar");
-        console.log("hello", i);
-        console.log(Math.floor((i / 120) * 100));
+        if (i === 0) {
+          setStyleComponent({ display: "none" });
+          setStyleHighScoreComponent({ display: "block" });
+        }
         i-- || clearInterval(int);
-
         bar.style.width = `${Math.floor((i / 120) * 100)}%`;
       }, 1000);
     };
     // 120 seconds, so 2 minutes of typing
-    countDown(120);
+    countDown(35);
+  };
+  const handleHighScoreInput = (e) => {
+    e.preventDefault();
+    setHighScoreName(e.target.value);
+  };
+  const handleHighScore = (e) => {
+    e.preventDefault();
+    var newHighScore = [e.target[0].defaultValue, errorCount, correctCount];
+    var winnersArray = winners.length > 0 ? winners.split(",") : [];
+    console.log(winnersArray);
+    winnersArray.push(newHighScore);
+    localStorage.setItem("G-Typers", winnersArray);
+    console.log("Submit Highscore");
+    setTotalWinners(winnersArray);
   };
   return (
     <div className="main-container">
@@ -84,6 +97,49 @@ const Main = () => {
         </h2>
         <div className="progress">
           <div className="bar shadow floor"></div>
+        </div>
+        <div className="high-score" style={styleHighScoreComponent}>
+          <h1>HighScore</h1>
+          <div>
+            <div className="row ">
+              <p className="col-4 border-bottom border-2 border-primary p-2 ">
+                Name
+              </p>
+              <p className="col-4 border-bottom border-2 border-primary p-2">
+                Error Count
+              </p>
+              <p className="col-4 border-bottom border-2 border-primary p-2">
+                Success Count
+              </p>
+            </div>
+            <ul className="score-list row">
+              {totalWinners.map((items) => {
+                var itemIndex = totalWinners.indexOf(items);
+                return (
+                  <p className="col-4" key={itemIndex}>
+                    {items}
+                  </p>
+                );
+              })}
+            </ul>
+          </div>
+          <div>
+            <div className="rate-error">
+              <p className="errorCount m-2" ref={errorRef}></p>
+              <p className="rate m-2" ref={wordsRef}></p>
+            </div>
+            <div className="save-card">
+              <form onSubmit={handleHighScore}>
+                <input
+                  className="saveInput"
+                  placeholder="Name..."
+                  value={highScoreName}
+                  onChange={handleHighScoreInput}
+                />
+                <button className="saveBtn">Save Results</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       <div className="card" style={styleReadyComponent}>
