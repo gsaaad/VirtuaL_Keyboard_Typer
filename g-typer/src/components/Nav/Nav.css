@@ -6,7 +6,9 @@ nav {
   font-size: 2.5rem;
   color: black;
   font-weight: 600;
-  margin: 2% 25%;
+  margin: 1% 25%;
+  padding: 2px;
   width: 50%;
-  border: 3px solid goldenrod;
+  border: 5px solid goldenrod;
+  border-radius: 10%;
 }
